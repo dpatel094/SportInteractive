@@ -58,21 +58,21 @@ class Inning {
     @Expose
     var batsmen: List<Batsman>? = null
 
-    @SerializedName("Partnership_Current")
-    @Expose
-    var partnershipCurrent: PartnershipCurrent? = null
-
-    @SerializedName("Bowlers")
-    @Expose
-    var bowlers: List<Bowler>? = null
-
-    @SerializedName("FallofWickets")
-    @Expose
-    var fallofWickets: List<FallofWicket>? = null
-
-    @SerializedName("PowerPlay")
-    @Expose
-    var powerPlay: PowerPlay? = null
+//    @SerializedName("Partnership_Current")
+//    @Expose
+//    var partnershipCurrent: PartnershipCurrent? = null
+//
+//    @SerializedName("Bowlers")
+//    @Expose
+//    var bowlers: List<Bowler>? = null
+//
+//    @SerializedName("FallofWickets")
+//    @Expose
+//    var fallofWickets: List<FallofWicket>? = null
+//
+//    @SerializedName("PowerPlay")
+//    @Expose
+//    var powerPlay: PowerPlay? = null
 
     @SerializedName("Target")
     @Expose

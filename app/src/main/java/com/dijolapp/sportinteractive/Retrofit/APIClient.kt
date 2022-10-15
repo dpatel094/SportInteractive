@@ -8,13 +8,11 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.insure.video.NetworkApi.Urls
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 object APIClient {
     private var retrofit: Retrofit? = null
-
-    //.addConverterFactory(ScalarsConverterFactory.create())
-    //.addConverterFactory(GsonConverterFactory.serializeNulls().create(gson))
     val client: Retrofit?
         get() {
             val interceptor = HttpLoggingInterceptor()
@@ -24,17 +22,10 @@ object APIClient {
                 .writeTimeout(1, TimeUnit.DAYS)
                 .readTimeout(1, TimeUnit.DAYS)
                 .addInterceptor(interceptor).build()
-            val gson = GsonBuilder()
-                .setDateFormat("yyyy-MM-dd HH:mm:ss")
-                .create()
             retrofit = Retrofit.Builder()
-                .baseUrl(Urls.BASE_URL) //.addConverterFactory(ScalarsConverterFactory.create())
-                //.addConverterFactory(GsonConverterFactory.serializeNulls().create(gson))
-                .addConverterFactory(
-                    GsonConverterFactory.create(
-                        GsonBuilder().serializeNulls().setDateFormat("yyyy-MM-dd HH:mm:ss").create()
-                    )
-                ).client(client)
+                .baseUrl(Urls.BASE_URL)
+                .addConverterFactory(ScalarsConverterFactory.create())
+                .client(client)
                 .build()
             return retrofit
         }

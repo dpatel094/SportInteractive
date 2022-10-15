@@ -11,5 +11,5 @@ interface Api {
     fun getnzin01312019187360(): Call<String?>?
 
     @GET(Urls.sapk01222019186652)
-    fun getsapk01222019186652(): Call<ParentJson?>?
+    fun getsapk01222019186652(): Call<String?>?
 }
