@@ -4,12 +4,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/cardview_shadow_start_color"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleGroup"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="horizontal"
+        app:checkedButton="@id/apione"
+        app:singleSelection="true">
 
+    <Button
+        android:id="@+id/apione"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="API ONE" />
+
+    <Button
+        android:id="@+id/apitwo"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="API TWO" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
     <androidx.cardview.widget.CardView
         android:id="@+id/cardview_id"
+        android:layout_below="@+id/toggleGroup"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

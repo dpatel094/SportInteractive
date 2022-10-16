@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.dijolapp.sportinteractive.PojoModels.Matchdetail
@@ -30,10 +30,14 @@ class MainActivity : AppCompatActivity() {
 
     var team_home : String? = null
     var team_away : String? = null
+    var apione : Button? = null
+    var apitwo : Button? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         utils = Utils()
+        apitwo = findViewById(R.id.apitwo)
+        apione = findViewById(R.id.apione)
         match_name = findViewById(R.id.match_name)
         Venue_Name = findViewById(R.id.Venue_Name)
         Match_Status = findViewById(R.id.Match_Status)
@@ -41,8 +45,9 @@ class MainActivity : AppCompatActivity() {
         Status = findViewById(R.id.Status)
         cardview_id = findViewById(R.id.cardview_id)
 
-        GetDataFromApi()
-
+        GetDataFromApi(0)
+        apione!!.setOnClickListener { GetDataFromApi(0) }
+        apitwo!!.setOnClickListener { GetDataFromApi(1) }
         cardview_id!!.setOnClickListener {
             val i = Intent(this, SecondActivity::class.java)
             i.putExtra("team_home",team_home)
@@ -51,10 +56,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun GetDataFromApi() {
+    fun GetDataFromApi(i: Int) {
         val apiInterface: Api? = APIClient.client!!.create(Api::class.java)
 
-        val call: Call<String?>? = apiInterface!!.getsapk01222019186652()
+        val call: Call<String?>? = if (i == 0) {
+            apiInterface!!.getsapk01222019186652()
+        }else{
+            apiInterface!!.getnzin01312019187360()
+        }
         call!!.enqueue(object : Callback<String?> {
             override fun onResponse(call: Call<String?>, response: Response<String?>) {
                 if (response.isSuccessful) {

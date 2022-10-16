@@ -7,32 +7,111 @@
     tools:context=".SecondActivity">
 
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView_id"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp">
-
-        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_below="@+id/cardView_id"
+        android:id="@+id/tabview"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cardView_id"
         android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_height="wrap_content">
-        <Button
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
+        android:layout_marginHorizontal="5dp"
+        android:weightSum="3">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleGroup"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/team_one"/>
-        <Button
-            android:layout_weight="1"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/team_two"/>
+            android:layout_weight="3"
+            android:orientation="horizontal"
+            app:checkedButton="@id/teamone"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/teamone"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <Button
+                android:id="@+id/teamtwo"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="" />
+
+            <Button
+                android:id="@+id/all"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="All" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
     </LinearLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tabview"
+        android:scrollIndicators="none"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/teamone_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:text=""
+                android:visibility="gone"
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:textAlignment="textStart"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:textSize="18sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:scrollbars="none"
+                android:layout_marginTop="5dp"
+                android:overScrollMode="never"
+                android:scrollIndicators="none"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+            <TextView
+                android:id="@+id/teamtwo_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="10dp"
+                android:text=""
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Display1"
+                android:textSize="18sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView2"
+                android:scrollbars="none"
+                android:layout_marginTop="5dp"
+                android:overScrollMode="never"
+                android:scrollIndicators="none"
+                android:layout_below="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
 </RelativeLayout>
